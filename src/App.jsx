@@ -16,7 +16,7 @@ function App() {
   const askQuestion = async () => {
 
     if(!question && !selectedHistory){
-      return false
+      return false;
     }
 
     if(question){
@@ -37,18 +37,24 @@ function App() {
     }
   const payloadData=question? question:selectedHistory
   const payload ={
-    "contents": [{
-    "parts": [{"text": payloadData }],
-    }]
-  }
+    contents: [
+      {
+        parts: [
+          {
+            text: payloadData
+          }
+        ]
+      }
+    ]
+  };
 
   setLoader(true);  
     let response = await fetch(URL, {
       method: "POST",
-      body: JSON.stringify(payload)
-    })
+      body: JSON.stringify(payload) 
+    });
 
-    response = await response.json();
+    response = await response.json(); 
     let dataString = response.candidates[0].content.parts[0].text;
     dataString =dataString.split("* ");
     dataString = dataString.map((item)=>item.trim())
@@ -159,5 +165,6 @@ setLoader(false);
     </div>
   )
 }
+  
 
 export default App

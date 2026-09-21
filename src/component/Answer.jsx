@@ -43,7 +43,7 @@ const Answer =({ans,totalResult,index, type})=>{
             index==0 && totalResult>1?<span className="pt-2 text-lg block text-white">{answer}</span>:
              heading?<span className="pt-2 text-lg block dark:text-white text-zinc-500">{answer}</span>
              :<span className={type=='q'?'p-1':'p-5'} >
-                <ReactMarkdown component={renderer}>{answer}</ReactMarkdown>
+                <ReactMarkdown components={renderer}>{answer}</ReactMarkdown>
              </span>  
 
         }
